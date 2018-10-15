@@ -3,9 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 import jinja2
 
-#template_dir = os.path.join(os.path.dirname(__file__), 'templates')
-#jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape=True)
-
 app = Flask(__name__)
 app.config['DEBUG'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://build-a-blog:password@localhost:8889/build-a-blog'
@@ -62,7 +59,7 @@ def blog_listings():
     if request.args:
         id = request.args.get("id")
         blog = Blog.query.get(id)
-        return render_template('blog-post.html', title="Build a blog", blog=blog)
+        return render_template('blog.html', title="Build a blog", blog=blog)
     else:
         blogs = Blog.query.all()
         

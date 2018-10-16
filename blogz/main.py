@@ -3,8 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 import jinja2
 
-#template_dir = os.path.join(os.path.dirname(__file__), 'templates')
-#jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape=True)
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -46,13 +44,7 @@ def require_login():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
-    #username = ''
-    #password = ''
-    #verify = ''
-    #username_err = ''
-    #password_err = ''
-    #verify_err = ''
-     
+         
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -114,22 +106,13 @@ def blog_listings():
     elif user_id:
         user = User.query.get(user_id)
         blogs = Blog.query.filter_by(owner=user).all()
-        return render_template('user.html', blogs=blogs)
+        return render_template('singleuser.html', blogs=blogs)
     
     else:
         blogs = Blog.query.all()
-        return render_template('user.html', blogs=blogs)
+        return render_template('singleuser.html', blogs=blogs)
 
-    #if request.args:
-     #   id = request.args.get("id")
-      #  blog = Blog.query.get(id)
-       # return render_template('blog-post.html', title="Build a blog", blog=blog)
-    #else:
-     #   blogs = Blog.query.all()
-      #  
-       # return render_template('blog-listings.html', blogs=blogs)
-
-
+    
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
     if request.method == 'POST':

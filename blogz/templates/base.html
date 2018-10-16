@@ -3,7 +3,7 @@
     <head>
         <style>
          ul {
-            font-family: Courier;
+            
             margin: center;
             font-size: 100%;
         }
@@ -11,15 +11,19 @@
     
     </head>
         <body>
-            <nav>
-                <ul>       
-                    <a href='/'><b>Home</b></a>
-                    <a href='/blog'><b>All Posts</b></a>
-                    <a href='/newpost'><b>New Post</b></a>
-                    <a href='/logout'>log out</a>
-                    <a href='/login'>log in</a>
-                </ul>
-            </nav>
+            
+            <ul> 
+                         
+                <a href='/'><b>Home</b></a>
+                <a style="margin-left: 1em" href='/blog'><b>All Posts</b></a>
+                <a style="margin-left: 1em" href='/newpost'><b>New Post</b></a>
+                
+                <div align="right">
+                <a style="margin-right: 1em"href='/logout'><b>Log Out</b></a>
+                <a style="margin-right: 1em"href='/login'><b>Log In</b></a>
+                </div>
+            </ul>
+            
     
         
     {% with messages = get_flashed_messages(with_categories=True) %}
